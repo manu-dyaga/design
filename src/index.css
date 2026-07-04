@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-cream text-ink font-body;
+}
+
+h1, h2, h3, h4 {
+  @apply font-display;
+}
+
+.eyebrow {
+  @apply tracking-[0.25em] uppercase text-xs font-medium text-gold-dark;
+}
+
+.divider-motif {
+  position: relative;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #C9A24B, transparent);
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 bg-maroon text-cream px-6 py-3 rounded-sm font-medium tracking-wide hover:bg-maroon-dark transition-colors duration-200;
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center gap-2 border border-maroon text-maroon px-6 py-3 rounded-sm font-medium tracking-wide hover:bg-maroon hover:text-cream transition-colors duration-200;
+}
+
+.card-shadow {
+  box-shadow: 0 10px 30px -12px rgba(78, 21, 38, 0.25);
+}
+
+:focus-visible {
+  outline: 2px solid #C9A24B;
+  outline-offset: 2px;
+}
+
+/* ---------- Animations ---------- */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes ringPulse {
+  0% { box-shadow: 0 0 0 0 rgba(201, 162, 75, 0.45); }
+  70% { box-shadow: 0 0 0 14px rgba(201, 162, 75, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(201, 162, 75, 0); }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-slow { animation: floatSlow 8s ease-in-out infinite; }
+.animate-fade-in { animation: fadeIn 0.9s ease-out both; }
+.animate-fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-scale-in { animation: scaleIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-ring-pulse { animation: ringPulse 2.4s ease-out infinite; }
+.animate-spin-slow { animation: spinSlow 16s linear infinite; }
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+.shimmer-text {
+  background: linear-gradient(90deg, #A9832F 0%, #F4E7C8 50%, #A9832F 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 3.5s linear infinite;
+}
+
+.logo-hover {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
+}
+.logo-hover:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 6px 16px rgba(201, 162, 75, 0.35));
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes badgeBump {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.35); }
+  60% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+@keyframes ribbonGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 162, 75, 0.55); }
+  50% { box-shadow: 0 0 0 6px rgba(201, 162, 75, 0); }
+}
+
+.animate-toast-in { animation: toastIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-badge-bump { animation: badgeBump 0.5s ease-out; }
+.animate-ribbon-glow { animation: ribbonGlow 2s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-toast-in,
+  .animate-badge-bump,
+  .animate-ribbon-glow {
+    animation: none !important;
+  }
+}
